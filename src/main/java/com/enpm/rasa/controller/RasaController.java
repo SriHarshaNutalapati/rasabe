@@ -65,38 +65,22 @@ public class RasaController {
     // Called when clicking on a product
     @GetMapping("/products/getProduct/{productId}")
     public ResponseEntity<Object> getProductById(@PathVariable int productId){
-        try{
-            return rasaService.getProductById(productId);
-        } catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("status", 2, "errorMsg", "Error! Please try again"));
-        }
+        return rasaService.getProductById(productId);
     }
 
     @GetMapping("/products/searchProducts/{productName}")
     public ResponseEntity<Object> getProductsByName(@PathVariable String productName){
-        try{
-            return rasaService.getProductsByName(productName);
-        } catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("status", 2, "errorMsg", "Error! Please try again"));
-        }
+        return rasaService.getProductsByName(productName);
     }
 
     @GetMapping("/products/getProductsByTag/{tagName}")
     public ResponseEntity<Object> getProductsByTag(@PathVariable String tagName){
-        try{
-            return rasaService.getProductsByTag(tagName);
-        } catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("status", 2, "errorMsg", e.getMessage()));
-        }
+        return rasaService.getProductsByTag(tagName);
     }
 
     @PostMapping("/products/filter")
     public ResponseEntity<Object> filterProducts(@RequestBody FilterProductsRequestDTO filters){
-        try{
-            return rasaService.filterProducts(filters);
-        } catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("status", 2, "errorMsg", "Error! Please try again"));
-        }
+        return rasaService.filterProducts(filters);
     }
 
     @PostMapping("/products/addTag")
@@ -310,6 +294,11 @@ public class RasaController {
 
     @GetMapping("/getproducts/home")
     public ResponseEntity<Object> getProductsForHome(){
+        return rasaService.getProductsForHome();
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<Object> getProductsForHomeNoUrl(){
         return rasaService.getProductsForHome();
     }
 

@@ -59,25 +59,6 @@ public class RasaService {
         }
     }
 
-//    public ResponseEntity<Object> editCardDetails(String userEmail, CardDetailsRequestDTO cardDetailsRequestDTO){
-//        try {
-//            User user = userRepository.findByEmail(userEmail)
-//                    .orElseThrow(() -> new Exception("User not found!"));
-//
-//            List<CardDetails> cardDetails = cardRepository.findByUserId(user.getUserId());
-//
-//            cardDetails.setName(cardDetailsRequestDTO.getName());
-//            cardDetailsRequestDTO.setPaymentId(cardDetailsRequestDTO.getPaymentId());
-//            cardDetailsRequestDTO.setPaymentMethod(cardDetailsRequestDTO.getPaymentMethod());
-//
-//            cardRepository.save(cardDetails);
-//
-//            return ResponseEntity.ok().body(Map.of("status", 1));
-//        } catch (Exception e){
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("status", 2, "errorMsg", e.getMessage()));
-//        }
-//    }
-
     public ResponseEntity<Object> addProductToWishlist(String userEmail, int productId){
         try{
             User user = userRepository.findByEmail(userEmail)
@@ -755,7 +736,6 @@ public class RasaService {
     public ResponseEntity<Object> getYOYSales(int year, String productName){
         try{
             List<Order> orders = orderRepository.findByYear(year);
-//            long sales = 0L;
             HashMap<Integer, Integer> yoySales = new HashMap<>();
             yoySales.put(year, 0);
             yoySales.put(year-1, 0);
@@ -855,26 +835,6 @@ public class RasaService {
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("status", 2, "errorMsg", e.getMessage()));
         }
-    }
-
-    private void generateUsers(){
-        for (int i = 0; i < 20; i++) {
-            String firstName = DummyData.getRandomFirstName();
-            String lastName = DummyData.getRandomLastName();
-            User user = User.builder()
-                    .firstName(firstName)
-                    .lastName(lastName)
-                    .email(firstName + lastName + "@gmail.com")
-                    .password(passwordEncoder.encode("abc123"))
-                    .role(Role.CUSTOMER)
-                    .build();
-
-            User userObj = userRepository.save(user);
-        }
-    }
-
-    private void generateProducts(){
-
     }
 
 

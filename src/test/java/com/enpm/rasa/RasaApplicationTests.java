@@ -10,4 +10,13 @@ class RasaApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void mainMethodTest() {
+		// Arrange
+		String[] args = new String[]{};
+
+		// Act & Assert
+		RasaApplication.main(args);
+	}
+
 }
