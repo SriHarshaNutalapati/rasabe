@@ -297,9 +297,9 @@ public class RasaController {
         return rasaService.getProductsForHome();
     }
 
-    @GetMapping("/")
-    public ResponseEntity<Object> getProductsForHomeNoUrl(){
-        return rasaService.getProductsForHome();
+    @GetMapping("")
+    public String rasaTest(){
+        return "Welcome to Rasa";
     }
 
 
