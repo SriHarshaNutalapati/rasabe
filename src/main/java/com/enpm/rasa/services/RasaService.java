@@ -462,7 +462,7 @@ public class RasaService {
             List<String> filteredTags = filters.getTags();
             if(!Objects.equals(filters.getSearchString(), "")){
                 for(Product product:products){
-                    if(product.getName().toLowerCase().contains(filters.getSearchString())){
+                    if(product.getName().toLowerCase().contains(filters.getSearchString().toLowerCase())){
                         filteredProducts.add(product);
                     }
                 }
